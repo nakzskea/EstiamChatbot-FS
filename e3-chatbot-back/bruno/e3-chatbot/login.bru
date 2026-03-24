@@ -1,0 +1,23 @@
+meta {
+  name: login
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/sign-in
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email" : "e@e",
+    "password" : "root"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
