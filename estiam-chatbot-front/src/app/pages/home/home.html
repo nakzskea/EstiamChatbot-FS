@@ -1,1 +1,25 @@
-<p>home works!</p>
+<div class="chat-container">
+  <h2>Chatbot Estiam</h2>
+  
+  <div class="chat-box">
+    <div *ngFor="let msg of messages" 
+         [ngClass]="{'user-msg': msg.sender === 'user', 'bot-msg': msg.sender === 'bot'}">
+      <p>{{ msg.text }}</p>
+    </div>
+    
+    <div *ngIf="isLoading" class="bot-msg loading">
+      <p><i>Le chatbot réfléchit...</i></p>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <input 
+      type="text" 
+      [(ngModel)]="userInput" 
+      (keyup.enter)="onSendMessage()" 
+      placeholder="Pose-moi une question sur les recettes ou autre..."
+      [disabled]="isLoading">
+      
+    <button (click)="onSendMessage()" [disabled]="isLoading">Envoyer</button>
+  </div>
+</div>
